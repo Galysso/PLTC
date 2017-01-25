@@ -18,7 +18,7 @@ int pls(const string s, const string t, const int i, const int j) {
 string A1(string s, string t) {
 	const int n = s.size();
 	int M[n][n];
-	int max = 1;
+	int max = 0;
 	int imax = 0;
 	
 	int i, j;
@@ -44,5 +44,5 @@ string A1(string s, string t) {
 		}
 	}
 	
-	return string(s, imax-max+1, max);
+	return s.substr(imax-max+1, max);
 }

@@ -1,5 +1,6 @@
 #include "Generator/Generator.hpp"
 #include "Algorithmes/A1.hpp"
+#include "Algorithmes/A2.hpp"
 
 #include <iostream>
 #include <cstdlib>
