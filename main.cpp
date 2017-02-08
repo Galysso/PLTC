@@ -19,6 +19,9 @@ int main(int argc, char *argv[]) {
 	t = generationAleatoire(20);
 	//s = selectionUtilisateur();
 	//t = selectionUtilisateur();
+
+	//s = "ACCAATATGCTGGATTTCTA";
+	//t = "CCGACGAGCCCACAAACTGG";
 	
 	cout << endl << "S : " << s << endl << endl;
 	

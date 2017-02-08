@@ -11,9 +11,9 @@ string A2(string s, string t) {
 	const int n = s.size();
 	
 	for (l = 1; l <= n; ++l) {
-		for (a = 0; a < n-l; ++a) {
+		for (a = 0; a <= n-l; ++a) {
 			b = l+a-1;
-			for (p = 0; p < n-l; ++p) {
+			for (p = 0; p <= n-l; ++p) {
 				i1 = a;
 				i2 = p;
 				q = l+p-1;
@@ -31,6 +31,8 @@ string A2(string s, string t) {
 			}
 		}
 	}
+
+	//cout << "max = " << max << endl;
 	
 	return s.substr(imax, max);
 }

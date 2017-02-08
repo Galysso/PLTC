@@ -16,7 +16,7 @@ string A3(string s, string t) {
 			// REMPLISSAGE DU TABLEAU
 			a = 0;
 			b = -1;
-			PMK[0] = -1;
+			PMK[i] = -1;
 			
 			while (a < j-i+1) {
 				while ((b > -1) && (s[i+a] != s[i+b])) {
@@ -24,7 +24,7 @@ string A3(string s, string t) {
 				}
 				++a;
 				++b;
-					if ((a < i-j+1) && (s[i+a] != s[i+b])) {
+				if ((a < i-j+1) && (s[i+a] != s[i+b])) {
 					PMK[i+a] = PMK[i+b];
 				} else {
 					PMK[i+a] = b;
@@ -35,21 +35,21 @@ string A3(string s, string t) {
 			bool res = false;
 			a = 0;
 
-			for (int k = 0; k < n; ++k) {
+/*			for (int k = 0; k < n; ++k) {
 				cout << PMK[k] << endl;
 			}
-			
+*/			
 			for (b = 0; b < n; ++b) {
 				while ((a > -1) && (s[i+a] != t[b])) {
-					cout << "a=" << a << endl;
+/*					cout << "a=" << a << endl;
 					cout << "i=" << i << endl;
-					cout << "PMK[" << i+1 << "]=" << PMK[i+a] << endl;
-					a = PMK[i+a];
-					cout << "a=" << a << endl << endl;
+					cout << "PMK[" << i+a << "]=" << PMK[i+a] << endl;
+*/					a = PMK[i+a];
+//					cout << "a=" << a << endl << endl;
 				}
 
 				a = a +1;
-				
+
 				if (a >= j-i+1) {
 					a = PMK[i+a];
 					if (max < j-i+1) {
