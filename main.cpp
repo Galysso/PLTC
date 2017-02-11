@@ -15,27 +15,32 @@ int main(int argc, char *argv[]) {
 	time_t debut, fin;
 
 	string s, t;
-	s = generationAleatoire(20);
-	t = generationAleatoire(20);
+	s = generationAleatoire(20000);
+	t = generationAleatoire(20000);
 	//s = selectionUtilisateur();
 	//t = selectionUtilisateur();
 
 	//s = "ACCAATATGCTGGATTTCTA";
 	//t = "CCGACGAGCCCACAAACTGG";
 	
-	cout << endl << "S : " << s << endl << endl;
+	//cout << endl << "S : " << s << endl << endl;
 	
-	cout << "T : " << t << endl << endl;
+	//cout << "T : " << t << endl << endl;
 	
 	debut = clock();
-
 	cout << "max A1 = " << A1(s, t) << endl;
-	cout << "max A2 = " << A2(s, t) << endl;
-	cout << "max A3 = " << A3(s, t) << endl << endl;
-
 	fin = clock();
+	cout << "temps : " << (double)(fin-debut)/CLOCKS_PER_SEC << "s" << endl << endl;
 
-	cout << "temps : " << (fin-debut)/CLOCKS_PER_SEC << "s" << endl << endl;
+	debut = clock();
+	cout << "max A2 = " << A2(s, t) << endl;
+	fin = clock();
+	cout << "temps : " << (double)(fin-debut)/CLOCKS_PER_SEC << "s" << endl << endl;
+
+	debut = clock();
+	cout << "max A3 = " << A3(s, t) << endl;
+	fin = clock();
+	cout << "temps : " << (double)(fin-debut)/CLOCKS_PER_SEC << "s" << endl << endl;
 	
 	return 0;
 }
