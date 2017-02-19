@@ -3,7 +3,7 @@
 #include <iostream>
 #include <string>
 
-short pls(const string s, const string t, const int i, const int j) {
+unsigned short pls(const string s, const string t, const int i, const int j) {
 	if (s[i] == t[j]) {
 		if ((i == 0) || (j == 0)) {
 			return 1;
@@ -15,14 +15,14 @@ short pls(const string s, const string t, const int i, const int j) {
 
 string A1(string s, string t) {
 	const int n = s.size();
-	short **M = new short * [n];
+	unsigned short **M = new unsigned short * [n];
 	int max = 0;
 	int imax = 0;
 	
 	int i, j;
 	
 	for (i = 0; i < n; ++i) {
-		M[i] = new short [n];
+		M[i] = new unsigned short [n];
 		M[i][0] = pls(s, t, i, 0);
 	}
 	for (j = 1; j < n; ++j) {
