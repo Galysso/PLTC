@@ -118,10 +118,10 @@ bool testExhaustif(int n, int algo) {
 
 	double bestT = (double)meilleur/CLOCKS_PER_SEC;
 	double pireT = (double)pire/CLOCKS_PER_SEC;
-	double tMoy = (double)(somme/CLOCKS_PER_SEC)/cpt;
-	cout << n << " & oui & " << setprecision(3) << cpt << " & " << setprecision(3) << bestT << " & " << setprecision(3) << tMoy << " & " << setprecision(3) << pireT << " \\\\hline" << endl;
+	double tMoy = (double)((double)somme/(double)cpt)/(double)CLOCKS_PER_SEC;
+	cout << n << " & " << cpt << " & oui & " << setprecision(3) << bestT << " & " << setprecision(3) << tMoy << " & " << setprecision(3) << pireT << " \\\\hline" << endl;
 
-	return (somme/CLOCKS_PER_SEC) < 180;
+	return ((somme/CLOCKS_PER_SEC) < 180);
 }
 
 bool testAleatoire(int n, int algo) {
@@ -167,12 +167,12 @@ bool testAleatoire(int n, int algo) {
 		}
 	} while (somme/CLOCKS_PER_SEC < 180);
 
-	double bestT = (double)meilleur/CLOCKS_PER_SEC;
-	double pireT = (double)pire/CLOCKS_PER_SEC;
-	double tMoy = (double)(somme/CLOCKS_PER_SEC)/cpt;
+	double bestT = (double)meilleur/(double)CLOCKS_PER_SEC;
+	double pireT = (double)pire/(double)CLOCKS_PER_SEC;
+	double tMoy = ((double)somme/(double)cpt)/(double)CLOCKS_PER_SEC;
 	cout << n << " & " << cpt << " & non & " << setprecision(3) << bestT << " & " << setprecision(3) << tMoy << " & " << setprecision(3) << pireT << " \\\\hline" << endl;
 
-	return ((somme/cpt)/CLOCKS_PER_SEC) < 180;
+	return (cpt > 1);
 }
 
 int main(int argc, char *argv[]) {	
@@ -273,9 +273,13 @@ int main(int argc, char *argv[]) {
 		}
 		i += palier;
 	}
-
 	//test aleatoire algo 2
-	// TODO
+	while (testAleatoire(i,2)) {
+		if (i == 10*palier) {
+			palier *= 10;
+		}
+		i += palier;
+	}
 
 	cout << "tests algo 3" << endl;
 	i = 1;
@@ -286,9 +290,13 @@ int main(int argc, char *argv[]) {
 		}
 		i += palier;
 	}
-
-	//test aleatoire algo 2
-	// TODO
+	//test aleatoire algo 3
+	while (testAleatoire(i,3)) {
+		if (i == 10*palier) {
+			palier *= 10;
+		}
+		i += palier;
+	}
 	
 	return 0;
 }
