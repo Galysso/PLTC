@@ -246,7 +246,7 @@ int main(int argc, char *argv[]) {
 	int i;
 	int palier;
 
-	cout << "tests algo 1" << endl;
+	/*cout << "tests algo 1" << endl;
 	i = 1;
 	palier = 1;
 	while (testExhaustif(i,1)) {
@@ -289,7 +289,9 @@ int main(int argc, char *argv[]) {
 			palier *= 10;
 		}
 		i += palier;
-	}
+	}*/
+	i = 9;
+	palier = 1;
 	//test aleatoire algo 3
 	while (testAleatoire(i,3)) {
 		if (i == 10*palier) {
