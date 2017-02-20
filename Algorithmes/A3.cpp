@@ -2,17 +2,19 @@
 
 #include <iostream>
 #include <string>
+#include <cstdlib>
+
+using namespace std;
 
 string A3(string s, string t) {
 	int n = s.size();
 	int i, j, a, b;
-	int *PMK = new int[n];
+	int PMK[n];
 	int imax = 0;
 	int max = 0;
 
 	for (i = 0; i < n; ++i) {
 		for (j = i; j < n; ++j) {
-
 			// REMPLISSAGE DU TABLEAU
 			a = 0;
 			b = -1;
@@ -35,17 +37,9 @@ string A3(string s, string t) {
 			bool res = false;
 			a = 0;
 
-/*			for (int k = 0; k < n; ++k) {
-				cout << PMK[k] << endl;
-			}
-*/			
 			for (b = 0; b < n; ++b) {
 				while ((a > -1) && (s[i+a] != t[b])) {
-/*					cout << "a=" << a << endl;
-					cout << "i=" << i << endl;
-					cout << "PMK[" << i+a << "]=" << PMK[i+a] << endl;
-*/					a = PMK[i+a];
-//					cout << "a=" << a << endl << endl;
+					a = PMK[i+a];
 				}
 
 				a = a +1;
@@ -60,6 +54,6 @@ string A3(string s, string t) {
 			}
 		}
 	}
-
+	
 	return s.substr(imax, max);
 }

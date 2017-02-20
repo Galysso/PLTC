@@ -134,7 +134,6 @@ bool testAleatoire(int n, int algo) {
 	pire = -1;
 
 	somme = 0;
-
 	do {
 		S = generationAleatoire(n);
 		T = generationAleatoire(n);
@@ -151,7 +150,9 @@ bool testAleatoire(int n, int algo) {
 			tps = fin-debut;
 		} else {
 			debut = clock();
+			//cout << "TOTO 1" << endl;
 			res = A3(S, T);
+			//cout << "TOTO 2" << endl;
 			fin = clock();
 			tps = fin-debut;
 		}
@@ -176,77 +177,100 @@ bool testAleatoire(int n, int algo) {
 }
 
 int main(int argc, char *argv[]) {	
-	/*srand(time(NULL));
+	srand(time(NULL));
 	time_t DEBUT, debut, fin, FIN, meilleur, pire;
 
 	string s, t;
 	string choix;
 	int n, algo;
-	bool ok = true;
+	bool ok;
 	string res;
-	int nbBoucle = 1000;
+	bool relancer;
+	bool newChaines = true;
 
 	do {
-		cout << "Entrée manuelle ou génération aléatoire ? (m/a) : ";
-		cin >> choix;
-	} while ((choix != "m") && (choix != "M") && (choix != "a") && (choix != "A"));
+		ok = true;
+		if (newChaines) {
+			do {
+				cout << "Entrée manuelle ou génération aléatoire ? (m/a) : ";
+				cin >> choix;
+			} while ((choix != "m") && (choix != "M") && (choix != "a") && (choix != "A"));
 
-	if (choix == "a") {
-		do {
-			cout << "Taille des chaînes : ";
-			cin >> n;
-		} while (n < 1);
-		s = generationAleatoire(n);
-		t = generationAleatoire(n);
-	} else {
-		s = selectionUtilisateur();
-		t = selectionUtilisateur();
-		if (s.size() == t.size()) {
-		} else {
-			ok = false;
-			cout << "Les deux chaînes n'ont pas la même taille" << endl;
+			if (choix == "a") {
+				do {
+					cout << "Taille des chaînes : ";
+					cin >> n;
+				} while (n < 1);
+				s = generationAleatoire(n);
+				t = generationAleatoire(n);
+			} else {
+				cout << "Première chaîne : ";
+				s = selectionUtilisateur();
+				cout << "Deuxième chaîne : ";
+				t = selectionUtilisateur();
+				if (s.size() == t.size()) {
+				} else {
+					ok = false;
+					newChaines = true;
+					cout << "Les deux chaînes n'ont pas la même taille" << endl;
+				}
+			}
 		}
-	}
-
-	cout << endl;
-	
-	if (ok) {
-		do {
-			cout << "Algorithme de résolution : 1,2,3 (4 pour tous) ";
-			cin >> algo;
-		} while ((algo < 1) && (algo > 4));
 
 		cout << endl;
+		
+		if (ok) {
+			do {
+				cout << "Algorithme de résolution : 1,2,3 (4 pour tous) ";
+				cin >> algo;
+			} while ((algo < 1) && (algo > 4));
 
-		if ((algo == 1) || (algo == 4)) {
-			debut = clock();
-			res = A1(s, t);
-			fin = clock();
-			cout << "max A1 = " << res.size() << " : (" << res << ")" << endl;
-			cout << "temps : " << (double)(fin-debut)/CLOCKS_PER_SEC << "s" << endl << endl;
+			cout << endl;
+
+			if ((algo == 1) || (algo == 4)) {
+				debut = clock();
+				res = A1(s, t);
+				fin = clock();
+				cout << "max A1 = " << res.size() << " : (" << res << ")" << endl;
+				cout << "temps : " << (double)(fin-debut)/CLOCKS_PER_SEC << "s" << endl << endl;
+			}
+
+			if ((algo == 2) || (algo == 4)) {
+				debut = clock();
+				res = A2(s, t);
+				fin = clock();
+				cout << "max A2 = " << res.size() << " : (" << res << ")" << endl;
+				cout << "temps : " << (double)(fin-debut)/CLOCKS_PER_SEC << "s" << endl << endl;
+			}
+
+			if ((algo == 3) || (algo == 4)) {
+				debut = clock();
+				res = A3(s, t);
+				fin = clock();
+				cout << "max A3 = " << res.size() << " : (" << res << ")" << endl;
+				cout << "temps : " << (double)(fin-debut)/CLOCKS_PER_SEC << "s" << endl << endl;
+			}
 		}
 
-		if ((algo == 2) || (algo == 4)) {
-			debut = clock();
-			res = A2(s, t);
-			fin = clock();
-			cout << "max A2 = " << res.size() << " : (" << res << ")" << endl;
-			cout << "temps : " << (double)(fin-debut)/CLOCKS_PER_SEC << "s" << endl << endl;
-		}
+		do {
+			cout << "Voulez-vous relancer ? (o/n) : ";
+			cin >> choix;
+		} while ((choix != "o") && (choix != "O") && (choix != "n") && (choix != "N"));
+		relancer = ((choix == "o") || (choix == "O"));
 
-		if ((algo == 3) || (algo == 4)) {
-			debut = clock();
-			res = A3(s, t);
-			fin = clock();
-			cout << "max A3 = " << res.size() << " : (" << res << ")" << endl;
-			cout << "temps : " << (double)(fin-debut)/CLOCKS_PER_SEC << "s" << endl << endl;
+		if (relancer && ok) {
+			do {
+				cout << "souhaitez-vous entrer de nouvelles chaînes ? (o/n) : ";
+				cin >> choix;
+			} while ((choix != "o") && (choix != "O") && (choix != "n") && (choix != "N"));
 		}
-	}*/
+		newChaines = ((choix == "o") || (choix == "O"));
+	} while (relancer);
 
-	int i;
+	/*int i;
 	int palier;
 
-	/*cout << "tests algo 1" << endl;
+	cout << "tests algo 1" << endl;
 	i = 1;
 	palier = 1;
 	while (testExhaustif(i,1)) {
@@ -289,7 +313,7 @@ int main(int argc, char *argv[]) {
 			palier *= 10;
 		}
 		i += palier;
-	}*/
+	}
 	i = 9;
 	palier = 1;
 	//test aleatoire algo 3
@@ -298,7 +322,7 @@ int main(int argc, char *argv[]) {
 			palier *= 10;
 		}
 		i += palier;
-	}
+	}*/
 	
 	return 0;
 }
